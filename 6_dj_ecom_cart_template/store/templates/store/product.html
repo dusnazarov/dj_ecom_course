@@ -85,7 +85,7 @@ $(document).on('click', '#add-cart', function(e){
     },
     success: function(json){
       console.log(json)      
-      document.getElementById("cart_quantity").textContent = json.cart_qty
+      document.getElementById("cart_quantity").innerHTML = json.cart_qty
     },
     error: function(xhr, errmsg, err){
 

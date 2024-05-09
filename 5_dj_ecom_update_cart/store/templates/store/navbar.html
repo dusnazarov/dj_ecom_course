@@ -29,13 +29,29 @@
                     </ul>
                 </li>
             </ul>
-            <form class="d-flex">
+<form class="d-flex">
+
+
+
 <a href="{% url 'cart_summary' %}" class="btn btn-outline-dark">
-    <i class="bi-cart-fill me-1"></i>
-    Cart
-    <span class="badge bg-dark text-white ms-1 rounded-pill"
-    id="cart_quantity">{{ cart|length }}</span></a>
-                
+
+
+  
+        <i class="bi-cart-fill me-1"></i>
+        Cart
+    
+        <span class="badge bg-dark text-white ms-1 rounded-pill"
+            id="cart_quantity">
+            {% with total_qty=cart|length %}
+            {% if total_qty > 0 %}
+            {{ total_qty }}
+                {% else %}
+                0                              
+            {% endif %}
+       {% endwith %} 
+    </span>      
+</a>
+              
             </form>
         </div>
     </div>

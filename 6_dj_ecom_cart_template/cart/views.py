@@ -25,21 +25,15 @@ def cart_add(request):
         # lookup product in DB
         product = get_object_or_404(Product, id=product_id)
 
-        ## Get Cart Quantity
-        cart_quantity = cart.__len__()
-        # print(cart_quantity)
-
-
         # Save to session
-        cart.add(product=product, quantity=product_qty, cart_qty=cart_quantity)
+        cart.add(product=product, product_qty=product_qty)
 
+        ## Get Cart Quantity
+        cart_qty = cart.__len__()       
+      
         
-        # # Return response
-        # response = JsonResponse({'Product Name: ': product.name })
-
-        response = JsonResponse({'cart_qty': cart_quantity})
+        response = JsonResponse({'cart_qty': cart_qty})
         return response
-
 
 
 def cart_delete(request):
