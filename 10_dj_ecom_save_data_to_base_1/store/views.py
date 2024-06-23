@@ -5,7 +5,9 @@ from django.contrib import messages
 from .forms import SignUpForm, UpdateUserForm, ChangePasswordForm, UserInfoForm
 from django.contrib.auth.models import User
 from django import forms
-from django.db.models import Q
+from django.db.models import Q;
+import json
+from cart.cart import Cart
 
 
 def serach(request):
@@ -132,12 +134,13 @@ def login_user(request):
 
         if user is not None:
             login(request, user)
+        
+
             messages.success(request, ("You Have Been Logged In!"))
             return redirect('home')
         else:
             messages.success(request, ("There was an error, Please Try Again"))
             return redirect('login')
-
     else:
         return render(request, 'store/login.html', {})
 
